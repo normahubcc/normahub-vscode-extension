@@ -1,0 +1,135 @@
+{
+  "name": "normahub-ai-gateway",
+  "displayName": "NormaHub AI Gateway",
+  "description": "Прямое подключение к моделям OpenAI, Claude и DeepSeek из РФ без VPN. Управление моделями, авто-конфигурация проектов и баланс.",
+  "version": "1.1.0",
+  "publisher": "normahub",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/normahubcc/normahub-vscode-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "normahub",
+    "openai",
+    "claude",
+    "cursor",
+    "russia",
+    "no-vpn",
+    "deepseek",
+    "cline",
+    "aider",
+    "windsurf"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "package": "python3 build_vsix.py"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "normahub-sidebar",
+          "title": "NormaHub Gateway",
+          "icon": "media/normahub-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "normahub-sidebar": [
+        {
+          "type": "webview",
+          "id": "normahub.controlView",
+          "name": "NormaHub Gateway"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "normahub.configureProject",
+        "title": "NormaHub: Настроить проект (Cursor, Windsurf, Aider, Cline)"
+      },
+      {
+        "command": "normahub.switchModel",
+        "title": "NormaHub: Выбрать активную модель"
+      },
+      {
+        "command": "normahub.testPing",
+        "title": "NormaHub: Проверить задержку сети"
+      },
+      {
+        "command": "normahub.openBilling",
+        "title": "NormaHub: Открыть биллинг"
+      },
+      {
+        "command": "normahub.explainSelection",
+        "title": "NormaHub: Объяснить выделенный код"
+      },
+      {
+        "command": "normahub.generateTests",
+        "title": "NormaHub: Сгенерировать тесты для выделенного кода"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "normahub.explainSelection",
+          "when": "editorHasSelection",
+          "group": "normahub@1"
+        },
+        {
+          "command": "normahub.generateTests",
+          "when": "editorHasSelection",
+          "group": "normahub@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "NormaHub Gateway",
+      "properties": {
+        "normahub.baseUrl": {
+          "type": "string",
+          "default": "https://api.normahub.cc/v1",
+          "description": "Эндпоинт шлюза"
+        },
+        "normahub.defaultModel": {
+          "type": "string",
+          "default": "claude-sonnet-5-5",
+          "enum": [
+            "claude-sonnet-5-5",
+            "gpt-6-astra",
+            "deepseek-v4.1-flash",
+            "claude-opus-5"
+          ],
+          "description": "Основная модель для работы с кодом"
+        },
+        "normahub.fastModel": {
+          "type": "string",
+          "default": "deepseek-v4.1-flash",
+          "description": "Модель для быстрых подсказок и автокомплита"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  }
+}
