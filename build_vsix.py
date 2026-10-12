@@ -36,6 +36,7 @@ def build_vsix():
   <Default Extension=".png" ContentType="image/png"/>
   <Default Extension=".svg" ContentType="image/svg+xml"/>
   <Default Extension=".vsixmanifest" ContentType="text/xml"/>
+  <Override PartName="/extension/LICENSE" ContentType="text/plain"/>
 </Types>
 """
 
@@ -64,6 +65,7 @@ def build_vsix():
   <Assets>
     <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/>
+    <Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/icon.png" Addressable="true"/>
   </Assets>
 </PackageManifest>
@@ -73,6 +75,7 @@ def build_vsix():
         ("package.json", "extension/package.json"),
         ("dist/extension.js", "extension/dist/extension.js"),
         ("README.md", "extension/README.md"),
+        ("LICENSE", "extension/LICENSE"),
         ("icon.png", "extension/icon.png"),
         ("media/normahub-icon.svg", "extension/media/normahub-icon.svg")
     ]

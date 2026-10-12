@@ -4,6 +4,7 @@
   "description": "Прямое подключение к моделям OpenAI, Claude и DeepSeek из РФ без VPN. Управление моделями, авто-конфигурация проектов и баланс.",
   "version": "1.1.0",
   "publisher": "normahub",
+  "license": "MIT",
   "icon": "icon.png",
   "repository": {
     "type": "git",
