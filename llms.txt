@@ -1,0 +1,8 @@
+# NormaHub VS Code & Cursor Extension
+
+> Native IDE extension for Cursor, Windsurf, VS Code, and VSCodium providing direct, low-latency access to NormaHub AI Gateway models without third-party VPN setup.
+
+## Overview
+- Source: https://github.com/normahubcc/normahub-vscode-extension
+- Marketplace VSIX: normahub-ai-gateway-1.1.0.vsix
+- Features: SecretStorage secure keychain, streaming AI Playground, TTFT latency telemetry, automated .cursorrules & .windsurfrules generator
