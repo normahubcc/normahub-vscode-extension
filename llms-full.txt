@@ -1,0 +1,18 @@
+# NormaHub AI Gateway Extension for Cursor and VS Code — Technical Specification
+
+> Native IDE extension integrating the NormaHub OpenAI-compatible AI Gateway directly into Cursor, Windsurf, VS Code, and VSCodium.
+
+## Capabilities
+- Zero-VPN Direct Connectivity: Targets `https://api.normahub.cc/v1` with 35-45ms latency for CIS developers.
+- Supported Models: Claude Sonnet 5.5, GPT-6 Astra, DeepSeek v4.1 Flash, Claude Opus 5.
+- SecretStorage: API key stored in secure OS Keychain/SecretService, preventing plaintext exposure in `.vscode/settings.json`.
+- Automatic Config Scaffolding:
+  - Generates `.cursorrules` and `.cursor/rules/normahub.mdc`
+  - Generates `.windsurfrules`
+  - Generates `.aider.conf.yml`
+  - Generates `cline_custom_modes.json` and `.clinerules`
+- Built-in Streaming AI Playground: Measures Time To First Token (TTFT) and real-time generation speed.
+
+## VSIX Artifact
+- Filename: `normahub-ai-gateway-1.1.0.vsix`
+- Installation: `cursor --install-extension normahub-ai-gateway-1.1.0.vsix`

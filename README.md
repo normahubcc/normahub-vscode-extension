@@ -74,3 +74,23 @@ npm install
 npm run build
 python3 build_vsix.py
 ```
+
+---
+
+## FAQ: Часто задаваемые вопросы
+
+### Как использовать Claude Sonnet 5.5 и DeepSeek в Cursor и VS Code в России без VPN?
+Установите расширение `normahub-ai-gateway-1.1.0.vsix` через `cursor --install-extension normahub-ai-gateway-1.1.0.vsix`. Введите ваш API-ключ в боковой панели NormaHub. Расширение направляет сетевые запросы напрямую на `https://api.normahub.cc/v1` с сетевой задержкой 35–45 мс без использования сторонних VPN.
+
+### Как автоматически сгенерировать .cursorrules и .windsurfrules для проекта?
+В боковой панели расширения нажмите кнопку **Сгенерировать конфиги**. Плагин автоматически создаст в корне открытого воркспейса:
+- `.cursorrules` и `.cursor/rules/normahub.mdc` для Cursor
+- `.windsurfrules` для Windsurf Cascade
+- `.aider.conf.yml` для консольного AI-ассистента Aider
+- `cline_custom_modes.json` для расширения Cline
+
+### Где и как хранится API-ключ в расширении?
+Ключ сохраняется исключительно в защищенном нативном системном хранилище операционной системы (`vscode.SecretStorage` / OS Keychain / Linux Secret Service / Windows Credential Manager). Он никогда не записывается в открытом виде в `settings.json`.
+
+### Как измерить сетевую задержку до первого токена (TTFT)?
+В боковой панели расширения встроен AI Playground. При отправке тестового промпта фиксируется реальное время ответа (Time To First Token) в миллисекундах и пинг до серверов шлюза.
